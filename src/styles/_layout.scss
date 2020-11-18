@@ -1,0 +1,80 @@
+html{
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    @include fluid-type($min_width, $max_width, $min_font, $max_font);
+    height: 100%;
+}
+
+main{
+    display: block;
+    position: relative;
+    padding-top: 8.26666666667rem; /*124px*/
+    padding-bottom:  7.8rem/*116*/
+}
+
+.container{
+    &_wrapper{
+        max-width: 624px;
+        margin: 0 auto;
+        &--message,  &--typing{
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            flex: 0 0 auto;
+        }
+    }
+}
+
+.header{
+    @include box_shadow(1);
+    padding-top: 0.53333333333rem;/*8*/
+    padding-right: 8px;
+    padding-left: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:3.33333333333rem;/*50*/
+    background: color-level('primary', 2);
+
+    &_wrapper{
+        position: relative;
+    }
+}
+
+.logo{
+    @include box_shadow(2);
+    background: foreground-color('primary', $threshold: .65, $dark : 4, $light : 8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6.2rem;/*93*/
+    width:  6.2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    &_icon{
+        fill: white;
+        width: 2.6rem;/*39*/
+        height: auto;
+    }
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-bottom: 1.33333333333rem;/*20*/
+    padding-top: 1.33333333333rem;/*20*/
+    background: color('primary');
+
+    &_wrapper{
+        max-width: 624px;
+        margin: 0 auto;
+    }
+}

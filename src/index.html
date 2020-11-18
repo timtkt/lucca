@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="chatApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lucca -  Automatisez vos processus administratifs et RH</title>
+        <meta property="og:title" content="Lucca -  Automatisez vos processus administratifs et RH">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://www.lucca.com/">
+        <meta property="og:description" content="Automatisez vos processus administratifs et RH">
+        <meta name="description" content="Les services en ligne Lucca remplacent vos fichiers Excel
+        et optimisent la gestion de vos processus interne">
+        <meta name="keywords" content="Lucca RH automatisation chat">
+        <meta name="author" content="Timothee Serck">
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Lucca">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="./assets/favicon/site.webmanifest">
+        <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <body ng-controller="ChatController">
+        <div class="symbols hidden"></div>
+        <main class="main">
+            <header class="header container">
+                <div class="header_wrapper container_wrapper">
+                    <div class="logo">
+                        <span tabindex="0" class="hidden outline">Lucca - Automatisez vos processus administratifs et RH</span>
+                        <svg class="logo_icon">
+                            <use xlink:href="#logo"/>
+                        </svg>
+                    </div>
+                </div>
+            </header>
+            <div class="chatbox container">
+                <div tabindex="1" class="chatbox_wrapper container_wrapper container_wrapper--message outline">
+                    <article  class="message" ng-repeat="message in messages">
+                        <header class="message_header" ng-class="{'message_header--user':message.me}">
+                            <p class="message_header__author"><strong>{{message.author}}</strong> {{message.time | date:' dd/MM/yyyy - HH:mm'}}</p>
+                        </header>
+                        <div class="message_body" ng-class="{'message_body--user':message.me}">
+                                <img alt="profil du message" class="message_body__img"  ng-src="{{message.img}}"/>
+                                <p class="message_body__txt">{{message.message}}</p>
+                        </div>
+                    </div>
+                    </article>
+                </div>
+                <div class="container" ng-if="messageInput">
+                    <div class="container_wrapper container_wrapper--typing">
+                        <div class="typing" ng-class="{show:messageInput }">
+                            <img class="typing_img" ng-src="{{messageInput.img}}" alt="envoyer" />
+                            <p ng-class="messageInput.author == 'operator' ? 'typing_txt--user' : 'typing_txt--operator'" class="typing_txt" >{{messageInput.author}} écrit ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer_wrapper">
+                <form  class="send" ng-submit="sendMessage()">
+                    <label class="hidden" for="submit">Message à envoyer</label>
+                    <input id="subùit" tabindex="3" class="send_input outline" placeholder="Envoyer un message" ng-model="currentMessage" ng-change="updateInput()">
+                    <button class="send_submit outline" ><span class="hidden">Envoyé</span>
+                        <svg class="send_submit__icon">
+                            <use xlink:href="#send" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+        <script src="../build/bundle.js"></script>
+    </body>
+</html>

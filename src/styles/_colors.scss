@@ -1,0 +1,45 @@
+/*https://scotch.io/tutorials/aesthetic-sass-2-colors*/
+$palette-colors: (
+  'primary': #006666, 
+  'secondary': #0F98D0,
+  'black': #000,
+  'white': #FFF
+);
+$color-interval: 10%;
+
+$color-opacity: (
+  'light': 0.8, // opacity used with lighter colors
+  'dark': 0.4   // opacity used with darker colors
+);
+
+@function color($key: 'primary') {
+  @return map-get($palette-colors, $key);
+}
+
+@function color-level($color-name: 'primary', $level: 0) {
+  $color: color($color-name);
+  $color-base: if($level < 0, black, white);
+
+  @return mix($color-base, $color, $level * $color-interval);
+}
+
+@function color-alpha($name: 'primary', $opacity: 0) {
+  $color: color($name);
+
+  // Get the named opacity level, if it exists
+  @if map-key-exists($color-opacity, $opacity) {
+    $opacity: map-get($color-opacity, $opacity);
+  }
+
+  // Use rgba() to manipulate the color's alpha level
+  @return rgba($color, $opacity);
+}
+
+
+// Returns either a dark or light foreground color, given
+// the background color
+@function foreground-color($bgcolor, $threshold: .65, $dark: 4, $light: 8) {
+  $color: map-get($palette-colors, $bgcolor);
+  $colorElem: if($bgcolor == "white", 'black', $bgcolor);
+  @return if(lightness($color) >= $threshold, color-level($colorElem, $dark), color-level($colorElem, $light));
+}
