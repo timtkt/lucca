@@ -6,7 +6,7 @@ test lucca
 - install dev dependencies
 - npm run dev (launch dev env)
 
-#files structure
+# files structure
 
 /
 
