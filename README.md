@@ -9,7 +9,6 @@ test lucca
 # files structure
 
 /
-
 /src
 /src/app.js
 /src/index.html
