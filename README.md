@@ -4,19 +4,19 @@ simple chat app with AngularJs and webpack
 
 # Accesibility
 
-- alt\
-- label\
-- outline style\
-- svg symbols with title and description\
-- color mixins for contrast background\
-- tab index\
-- html5 tags\
-- hidden naming in render but not for screen reader (hidden)\
-- typo mixins for modulable font\
-- always show the last message (srcoll fct)\
-- when enter key is press the message is send\
+- alt
+- label
+- outline style
+- svg symbols with title and description
+- color mixins for contrast background
+- tab index
+- html5 tags
+- hidden naming in render but not for screen reader (hidden)
+- typo mixins for modulable font
+- always show the last message (srcoll fct)
+- when enter key is press the message is send
 
-NB: for each scss files i put link to article if you want more explenation\
+NB: for each scss files i put link to article if you want more explenation
 
 # How to install
 
