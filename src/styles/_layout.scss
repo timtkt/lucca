@@ -1,6 +1,6 @@
 html{
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Source Sans Pro",Helvetica,arial,sans-serif;
 }
 body{
     @include fluid-type($min_width, $max_width, $min_font, $max_font);

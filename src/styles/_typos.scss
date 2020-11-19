@@ -46,7 +46,6 @@ $mod_2: 1.4; // desktop
     @include fluid-type($min_width, $max_width, $mod_1*$mod_1 *$min_font, $mod_2*$mod_2 *$min_font);
   }
 
-
   strong{
-    font-weight: 800;
+    font-weight: 700;
   }
