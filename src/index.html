@@ -64,7 +64,7 @@
             <div class="footer_wrapper">
                 <form  class="send" ng-submit="sendMessage()">
                     <label class="hidden" for="submit">Message à envoyer</label>
-                    <input id="subùit" tabindex="3" class="send_input outline" placeholder="Envoyer un message" ng-model="currentMessage" ng-change="updateInput()">
+                    <input name="message" id="submit" tabindex="3" class="send_input outline" placeholder="Envoyer un message" ng-model="currentMessage" ng-change="updateInput()">
                     <button class="send_submit outline" ><span class="hidden">Envoyé</span>
                         <svg class="send_submit__icon">
                             <use xlink:href="#send" />

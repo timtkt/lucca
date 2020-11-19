@@ -33,12 +33,12 @@ chatApp.controller('ChatController',
       $scope.updateInput = function(){
         var size = $scope.currentMessage.length;
         if (!$scope.messageInput && size > 0){
-          $scope.messageInput ={
+          $scope.messageInput = {
             author: USER.name,
             img : USER.imgLong,
             type : USER.type
-
           } 
+           
         }else if(size === 0){
           $scope.messageInput = null;
         }
@@ -50,7 +50,8 @@ chatApp.controller('ChatController',
       $scope.sendMessage = function(){
         if ($scope.currentMessage.length > 0){
           addUserMessage($scope.currentMessage+'', true);
-          
+
+
           // On néttoie et on simule la conversation
           $scope.currentMessage = '';
           $scope.messageInput = null;
@@ -69,11 +70,22 @@ chatApp.controller('ChatController',
 
               $scope.messageInput = null;
               addUserMessage(response.data[0], false);
+
+              $timeout(()=>{
+                if(document.querySelector('.message')){
+                  let messages = document.querySelectorAll('.message');
+                  let lastMessage = messages[messages.length - 1]
+                  lastMessage.scrollIntoView(true);
+                }
+              }, 200)
+
             },
             function callBackError(){
               $scope.messageInput = null;
             });
           }, 500);
+          
+          
         }
       }
 
@@ -102,12 +114,43 @@ chatApp.controller('ChatController',
         
       }()
 
+
+      /**
+       * Fonction utilitaire pour scroll le contenu en bas a la submition du form
+       */
+      $scope.addFocus = function() {
+        const sendInput = document.querySelector('.send_input');
+        // const footer = document.querySelector('.footer');
+        
+        sendInput.addEventListener('keyup', function (e) {
+
+          if($scope.currentMessage.length > 0){
+            document.querySelector('.typing').scrollIntoView(true);
+          }
+        })
+        
+      }()
+
+
       /**
        * Fonction utilitaire pour ajouter les symboles svg
        */
       $scope.symbols = function() {
         document.querySelector('.symbols').innerHTML = symbol;
       }()
+
+      
+      // $scope.$watch('currentMessage', function() { 
+      //   if(document.querySelector('.message')){
+      //     let messages = document.querySelectorAll('.message');
+      //     let lastMessage = messages[messages.length - 1]
+      //     lastMessage.scrollIntoView(true);
+      //   }
+      // }, true);
+      
+
+
+      
 
 }]);
 
